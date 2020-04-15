@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/WilliLam/memodemo.git/static/css/main.d1b05096.chunk.css",
+    "main.js": "/WilliLam/memodemo.git/static/js/main.0d06063d.chunk.js",
+    "main.js.map": "/WilliLam/memodemo.git/static/js/main.0d06063d.chunk.js.map",
+    "runtime-main.js": "/WilliLam/memodemo.git/static/js/runtime-main.4c1b9cb1.js",
+    "runtime-main.js.map": "/WilliLam/memodemo.git/static/js/runtime-main.4c1b9cb1.js.map",
+    "static/js/2.06b39863.chunk.js": "/WilliLam/memodemo.git/static/js/2.06b39863.chunk.js",
+    "static/js/2.06b39863.chunk.js.map": "/WilliLam/memodemo.git/static/js/2.06b39863.chunk.js.map",
+    "index.html": "/WilliLam/memodemo.git/index.html",
+    "precache-manifest.d0310fa33c1bcb3b049665617560216b.js": "/WilliLam/memodemo.git/precache-manifest.d0310fa33c1bcb3b049665617560216b.js",
+    "service-worker.js": "/WilliLam/memodemo.git/service-worker.js",
+    "static/css/main.d1b05096.chunk.css.map": "/WilliLam/memodemo.git/static/css/main.d1b05096.chunk.css.map",
+    "static/js/2.06b39863.chunk.js.LICENSE.txt": "/WilliLam/memodemo.git/static/js/2.06b39863.chunk.js.LICENSE.txt",
+    "static/media/logo.svg": "/WilliLam/memodemo.git/static/media/logo.5d5d9eef.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.4c1b9cb1.js",
+    "static/js/2.06b39863.chunk.js",
+    "static/css/main.d1b05096.chunk.css",
+    "static/js/main.0d06063d.chunk.js"
+  ]
+}
