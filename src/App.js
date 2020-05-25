@@ -6,26 +6,43 @@ import shuffle from "./shuffle";
 class Controller extends React.Component {
   constructor(props) {
     super();
-    this.state = {size:2, boardState:this.generateBoardState()}
+    let board = this.generateBoardState();
+    let boardState = board[0];
+    let matches = board[1];
+
+    this.state = {size:2, boardState:boardState, matches:matches}
 
   }
   generateBoardState() {
-    let values = ["A", "A", "B", "B", "C", "C", "D", "D", "R"]
-    values = shuffle(values)
-    // console.log(values)
-    var board = new Array(3);
-    for (var i = 0; i < 3;  i++) {
-      board[i] = new Array(3);
-      for (var j = 0; j< 3; j++)
-        board[i][j] = values[i*3+j];
-        // board[i][j] = values[i*2+j]
+    // let values = ["A", "A", "B", "B", "C", "C", "D", "D", "R"];
+    let inputs = {"Yalla!": "Let's go!", "Habibi":"Dear", "Salam": "Peace", "Walad":"Boy",
+        "Binnit": "Girl", "Wahid":"One", "Asfi":"Sorry", "Sabah heir":"Good morning"};
+    let values2 = [];
+    for (const key in inputs) {
+      values2.push(key);
+      values2.push(inputs[key])
+    }
+    let values = shuffle(values2);
+    console.log("vals2" , values2)
+    console.log(values);
+    let size = Math.ceil(Math.sqrt(values.length));
+
+    var board = new Array(size);
+    for (var i = 0; i < size;  i++) {
+      board[i] = new Array(size);
+      for (var j = 0; j< size; j++) {
+        if (values[i * 4 + j] !== null) {
+          board[i][j] = values[i * 4 + j];
+        }
+      }
+      // board[i][j] = values[i*2+j]
     }
     // console.log(values)
-    return board
+    return [board, inputs]
   }
   render() {
     return(
-      <Board boardVals={this.state.boardState} size={3}/>
+      <Board boardVals={this.state.boardState} matches={this.state.matches} size={this.state.boardState.length}/>
     )
   }
 }

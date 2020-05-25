@@ -56,29 +56,32 @@ class Board extends React.Component{
           let rowID = `row${i}`
           let cell = []
           for (var idx = 0; idx < this.props.size; idx++){
-            let cellID = `cell${i}-${idx}`
-              console.log("board matching", [i, idx], this.state.matching)
-              if (this.state.matching !== null) {
-                  console.log(this.state.matching[1])
-              }
-              if ((this.state.matching !== null && arraysEqual([i, idx] , this.state.matching[1])) ||
-                (this.state.matching1 !== null && arraysEqual([i, idx] , this.state.matching1[1]))){
-                console.log("match found")
+              let cellID = `cell${i}-${idx}`
+              if (this.props.boardVals[i][idx] === undefined) {
+                  cell.push(
+                    <td key={cellID} id={cellID}/>
+                )
+              } else {
+                // console.log("board matching", [i, idx], this.state.matching)
+                // if (this.state.matching !== null) {
+                //   console.log(this.state.matching[1])
+                // }
+                if ((this.state.matching !== null && arraysEqual([i, idx] , this.state.matching[1])) ||
+                (this.state.matching1 !== null && arraysEqual([i, idx] , this.state.matching1[1])) ||
+                (this.state.matched.has(this.props.boardVals[i][idx]))
+                ){
+                // showVal if matched or matching console.log("match found")
                 cell.push(
                 <td key={cellID} id={cellID}><Tile val={this.props.boardVals[i][idx]} index={[i, idx]} onClick={this.clickTile}
                           showVal="true"/></td>)
-              } else if (this.state.matched.has(this.props.boardVals[i][idx])) {
-                  cell.push(
-                <td key={cellID} id={cellID}><Tile val={this.props.boardVals[i][idx]} index={[i, idx]} onClick={this.clickTile}
-                          showVal = "true"/></td>)
-              }
+                }
 
-              else{
+                else{
                 cell.push(
                 <td key={cellID} id={cellID}><Tile val={this.props.boardVals[i][idx]} index={[i, idx]} onClick={this.clickTile}
                           showVal="false"/></td>)
-              }
-
+                }
+            }
           }
 
           newTiles.push(<tr key={i} id={rowID}>{cell}</tr>)
@@ -111,9 +114,10 @@ class Board extends React.Component{
             return
         }
         else {
-            if (this.state.matching[0] === tile) {
+            if (this.props.matches[this.state.matching[0]] === tile ||
+                this.props.matches[tile] === this.state.matching[0] ) {
 
-                this.setState({matched: this.state.matched.add(tile), matching:null},
+                this.setState({matched: this.state.matched.add(tile).add(this.state.matching[0]), matching:null},
                 ()=> {
                     this.renderTiles()
                 })
@@ -142,8 +146,10 @@ class Board extends React.Component{
         this.setState({flipping : true},
             // }, 1000)
          async ()=> {
-             this.checkMatch(tile, index)
+             await this.checkMatch(tile, index)
+
              await sleep(600)
+
              // setTimeout(()=> {
                 this.setState({flipping:false})
                 // if (res === "wrong tile") {
@@ -152,6 +158,10 @@ class Board extends React.Component{
         }
 
             )
+         // this.state.flipping = true
+         // await this.checkMatch(tile, index)
+         // await sleep(1000)
+         // this.state.flipping = false
         // if (this.state.flipping) {
         //     return
         // } else{
@@ -164,21 +174,10 @@ class Board extends React.Component{
         //
         //         })
         // }
-        console.log("wtffff", tile, index)
-
-        // if (this.state.matching !== null)
-        // { console.log("wtf" ,index, this.state.matching[1]) }
-        // console.log("render tiles")
-
     }
 
     render()
-
-
         {
-
-
-
             return (
                 <div className="container">
                     <div className="row">
