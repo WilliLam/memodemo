@@ -7,7 +7,7 @@ class Controller extends React.Component {
   constructor(props) {
     super();
     let inputs = {"Yalla!": "Let's go!", "Habibi":"Dear", "Salam": "Peace", "Walad":"Boy",
-        "Binnit": "Girl", "Wahid":"One", "Asfi":"Sorry", "Sabah heir":"Good morning", "A":"B"};
+        "Binnit": "Girl", "Wahid":"One", "Asfi":"Sorry", "Sabah heir":"Good morning"};
     this.state = {inputs:inputs}
     let board = this.generateBoardState(this.state.inputs);
     let boardState = board[0];
@@ -60,7 +60,7 @@ class Controller extends React.Component {
   render() {
     return(
         <div>
-          <Board boardVals={this.state.boardState} matches={this.state.matches} size={this.state.boardState.length}/>
+          <Board boardVals={this.state.boardState} matches={this.state.matches} size={this.state.boardState.length} inputSize={Object.keys(this.state.inputs).length*2}/>
           <CustomInput update={this.updateInputs} inputs={this.state.inputs}></CustomInput>
         </div>
       )

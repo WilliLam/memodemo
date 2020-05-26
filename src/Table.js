@@ -32,20 +32,18 @@ class Board extends React.Component{
 
     componentDidMount() {
         this.renderTiles()
-
-
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
-        if (this.state.matched.size === 4) {
+        if (this.state.matched.size === this.props.inputSize) {
             let sd = new Audio(applause)
             sd.play()
         }
         if (prevProps.boardVals !== this.props.boardVals){
-            this.renderTiles()
             this.setState({matched: new Set(),
-            matching:null,
-            matching1:null})
+                matching:null,
+                matching1:null})
+            this.renderTiles()
         }
 
     }
