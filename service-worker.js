@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/memodemo/precache-manifest.c52464b838d7c646409fd6708b7fe923.js"
+  "/memodemo/precache-manifest.b856ff078261f8f0d8d186e5d5549116.js"
 );
 
 self.addEventListener('message', (event) => {

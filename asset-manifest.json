@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/memodemo/static/css/main.476551cf.chunk.css",
-    "main.js": "/memodemo/static/js/main.5fdd80bf.chunk.js",
-    "main.js.map": "/memodemo/static/js/main.5fdd80bf.chunk.js.map",
+    "main.js": "/memodemo/static/js/main.dd916e91.chunk.js",
+    "main.js.map": "/memodemo/static/js/main.dd916e91.chunk.js.map",
     "runtime-main.js": "/memodemo/static/js/runtime-main.9b315a2b.js",
     "runtime-main.js.map": "/memodemo/static/js/runtime-main.9b315a2b.js.map",
     "static/js/2.fd6a8cc4.chunk.js": "/memodemo/static/js/2.fd6a8cc4.chunk.js",
     "static/js/2.fd6a8cc4.chunk.js.map": "/memodemo/static/js/2.fd6a8cc4.chunk.js.map",
     "index.html": "/memodemo/index.html",
-    "precache-manifest.c52464b838d7c646409fd6708b7fe923.js": "/memodemo/precache-manifest.c52464b838d7c646409fd6708b7fe923.js",
+    "precache-manifest.b856ff078261f8f0d8d186e5d5549116.js": "/memodemo/precache-manifest.b856ff078261f8f0d8d186e5d5549116.js",
     "service-worker.js": "/memodemo/service-worker.js",
     "static/css/main.476551cf.chunk.css.map": "/memodemo/static/css/main.476551cf.chunk.css.map",
     "static/js/2.fd6a8cc4.chunk.js.LICENSE.txt": "/memodemo/static/js/2.fd6a8cc4.chunk.js.LICENSE.txt",
@@ -18,6 +18,6 @@
     "static/js/runtime-main.9b315a2b.js",
     "static/js/2.fd6a8cc4.chunk.js",
     "static/css/main.476551cf.chunk.css",
-    "static/js/main.5fdd80bf.chunk.js"
+    "static/js/main.dd916e91.chunk.js"
   ]
 }
