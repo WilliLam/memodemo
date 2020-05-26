@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "31c1d3bd677a00a5f0c713934b2c2c35",
+    "revision": "6e95622a3420ec190925360c718c7f30",
     "url": "/memodemo/index.html"
   },
   {
-    "revision": "ed073aac61a5e4342903",
-    "url": "/memodemo/static/css/main.49c13db1.chunk.css"
+    "revision": "b5646aa45fd0607fb9c5",
+    "url": "/memodemo/static/css/main.476551cf.chunk.css"
   },
   {
-    "revision": "2dc940c9747023698127",
-    "url": "/memodemo/static/js/2.ce14a89b.chunk.js"
+    "revision": "fe0be728e21fbb1fd8fc",
+    "url": "/memodemo/static/js/2.fd6a8cc4.chunk.js"
   },
   {
     "revision": "6e742f513d9938d07b2d93218f3e4449",
-    "url": "/memodemo/static/js/2.ce14a89b.chunk.js.LICENSE.txt"
+    "url": "/memodemo/static/js/2.fd6a8cc4.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "ed073aac61a5e4342903",
-    "url": "/memodemo/static/js/main.31455f8e.chunk.js"
+    "revision": "b5646aa45fd0607fb9c5",
+    "url": "/memodemo/static/js/main.5fdd80bf.chunk.js"
   },
   {
     "revision": "76bb5e56aef706f74f90",
