@@ -1,22 +1,41 @@
 import React from 'react';
-// import logo from './logo.svg';
 import './App.css';
 import Board from './Table'
 import shuffle from "./shuffle";
+import $ from 'jquery';
 class Controller extends React.Component {
   constructor(props) {
     super();
-    let board = this.generateBoardState();
+    let inputs = {"Yalla!": "Let's go!", "Habibi":"Dear", "Salam": "Peace", "Walad":"Boy",
+        "Binnit": "Girl", "Wahid":"One", "Asfi":"Sorry", "Sabah heir":"Good morning", "A":"B"};
+    this.state = {inputs:inputs}
+    let board = this.generateBoardState(this.state.inputs);
     let boardState = board[0];
     let matches = board[1];
-
-    this.state = {size:2, boardState:boardState, matches:matches}
+    this.updateInputs = this.updateInputs.bind(this)
+    this.state = {boardState:boardState, matches:matches, inputs:inputs}
 
   }
-  generateBoardState() {
-    // let values = ["A", "A", "B", "B", "C", "C", "D", "D", "R"];
-    let inputs = {"Yalla!": "Let's go!", "Habibi":"Dear", "Salam": "Peace", "Walad":"Boy",
-        "Binnit": "Girl", "Wahid":"One", "Asfi":"Sorry", "Sabah heir":"Good morning"};
+  updateInputs (newInputs) {
+    this.setState({inputs:newInputs})
+    return
+  }
+
+  componentDidUpdate(prevProps, prevState, snapshot) {
+    if (prevState.inputs !== this.state.inputs) {
+      console.log("SUER UPDATE")
+      // this.generateBoardState(this.state.inputs)
+      let board = this.generateBoardState(this.state.inputs);
+      let boardState = board[0];
+      let matches = board[1];
+      this.updateInputs = this.updateInputs.bind(this)
+      this.setState({boardState:boardState, matches:matches})
+    }
+  }
+
+  generateBoardState(inputs) {
+    // let Testvalues = ["A", "A", "B", "B", "C", "C", "D", "D", "R"];
+
     let values2 = [];
     for (const key in inputs) {
       values2.push(key);
@@ -31,22 +50,59 @@ class Controller extends React.Component {
     for (var i = 0; i < size;  i++) {
       board[i] = new Array(size);
       for (var j = 0; j< size; j++) {
-        if (values[i * 4 + j] !== null) {
-          board[i][j] = values[i * 4 + j];
+        if (values[i * size + j] !== null) {
+          board[i][j] = values[i * size + j];
         }
       }
-      // board[i][j] = values[i*2+j]
     }
-    // console.log(values)
     return [board, inputs]
   }
   render() {
     return(
-      <Board boardVals={this.state.boardState} matches={this.state.matches} size={this.state.boardState.length}/>
-    )
+        <div>
+          <Board boardVals={this.state.boardState} matches={this.state.matches} size={this.state.boardState.length}/>
+          <CustomInput update={this.updateInputs} inputs={this.state.inputs}></CustomInput>
+        </div>
+      )
   }
 }
 
+class CustomInput extends React.Component {
+  constructor(props) {
+    super();
+    this.state = {newInputs: {"Yalla!": "Let's go!", "Habibi":"Dear", "Salam": "Peace", "Walad":"Boy",
+        "Binnit": "Girl", "Wahid":"One", "Asfi":"Sorry", "Sabah heir":"Good morning", "A":"B"}}
+  }
+
+  // updateNewInputs() {
+    // this.setState({newInputs:$("#inputBox").val() })
+
+  // }
+
+  shouldComponentUpdate(nextProps, nextState, nextContext) {
+    return false
+  }
+
+  render() {
+    // console.log("test", )
+    let strInputs = JSON.stringify(this.props.inputs)
+    console.log("testing", strInputs)
+    return(
+        <div style={{display:"grid"}}>
+          <h4><u>Custom input</u></h4>
+          {/*value={JSON.stringify(this.state.newInputs)*/}
+          <textarea style={{height:"6rem"}} id="inputBox" placeholder={strInputs}/>
+          <div style={{marginLeft:"auto", marginRight:"0px", marginTop:"0.5rem", marginBottom:"0.5rem"}}>
+            <button
+                    onClick={() => this.props.update(JSON.parse($("#inputBox").val()))}>
+              Update
+            </button>
+          </div>
+        </div>
+    )
+  }
+
+}
 
 
 
@@ -55,24 +111,13 @@ class Controller extends React.Component {
 
 function App() {
   return (
-    <div className="App">
-      <Controller/>
-      {/*<header className="App-header">*/}
-
-      {/*  <img src={logo} className="App-logo" alt="logo" />*/}
-      {/*  <p>*/}
-      {/*    Edit <code>src/App.js</code> and save to reload.*/}
-      {/*  </p>*/}
-      {/*  <a*/}
-      {/*    className="App-link"*/}
-      {/*    href="https://reactjs.org"*/}
-      {/*    target="_blank"*/}
-      {/*    rel="noopener noreferrer"*/}
-      {/*  >*/}
-      {/*    Learn React*/}
-      {/*  </a>*/}
-      {/*</header>*/}
-    </div>
+      <div>
+        <div className="App" style={{textAlign:"center", width:"50%", margin:"0 auto"}}>
+          <h1>MemoDemo</h1>
+          <br/>
+          <Controller/>
+        </div>
+      </div>
   );
 }
 

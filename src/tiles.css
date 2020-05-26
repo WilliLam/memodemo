@@ -50,3 +50,11 @@ body {
   color: white;
   transform: rotateY(180deg);
 }
+
+/*tr {*/
+/*  display: grid;*/
+/*}*/
+
+td {
+  display: ruby;
+}

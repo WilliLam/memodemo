@@ -1,11 +1,8 @@
 import React from "react";
-// import $ from "jquery";
 import "jquery";
 import applause from "./applauseSound.mp3"
-// import "flip";
 import Tile from "./tile";
 import "./tiles.css"
-
 
 function arraysEqual(arr1, arr2) {
     if(arr1.length !== arr2.length)
@@ -14,7 +11,6 @@ function arraysEqual(arr1, arr2) {
         if(arr1[i] !== arr2[i])
             return false;
     }
-
     return true;
 }
 
@@ -45,10 +41,17 @@ class Board extends React.Component{
             let sd = new Audio(applause)
             sd.play()
         }
+        if (prevProps.boardVals !== this.props.boardVals){
+            this.renderTiles()
+            this.setState({matched: new Set(),
+            matching:null,
+            matching1:null})
+        }
+
     }
 
     renderTiles = () => {
-        console.log("renderTiles", this.state.matching)
+        // console.log("renderTiles", this.state.matching)
         // console.log("render")
         // this.setState({rows:[]})
         let newTiles = []
@@ -66,21 +69,19 @@ class Board extends React.Component{
                 // if (this.state.matching !== null) {
                 //   console.log(this.state.matching[1])
                 // }
+              let showValue = "false";
                 if ((this.state.matching !== null && arraysEqual([i, idx] , this.state.matching[1])) ||
                 (this.state.matching1 !== null && arraysEqual([i, idx] , this.state.matching1[1])) ||
                 (this.state.matched.has(this.props.boardVals[i][idx]))
                 ){
                 // showVal if matched or matching console.log("match found")
-                cell.push(
-                <td key={cellID} id={cellID}><Tile val={this.props.boardVals[i][idx]} index={[i, idx]} onClick={this.clickTile}
-                          showVal="true"/></td>)
+                    showValue = "true";
+
                 }
 
-                else{
                 cell.push(
                 <td key={cellID} id={cellID}><Tile val={this.props.boardVals[i][idx]} index={[i, idx]} onClick={this.clickTile}
-                          showVal="false"/></td>)
-                }
+                          showVal={showValue}/></td>)
             }
           }
 
@@ -145,35 +146,19 @@ class Board extends React.Component{
         }
         this.setState({flipping : true},
             // }, 1000)
-         async ()=> {
-             await this.checkMatch(tile, index)
+     async ()=> {
+                 await this.checkMatch(tile, index)
 
-             await sleep(600)
+                 await sleep(600)
 
-             // setTimeout(()=> {
+                 // setTimeout(()=> {
                 this.setState({flipping:false})
                 // if (res === "wrong tile") {
 
                 // }
-        }
+            }
 
-            )
-         // this.state.flipping = true
-         // await this.checkMatch(tile, index)
-         // await sleep(1000)
-         // this.state.flipping = false
-        // if (this.state.flipping) {
-        //     return
-        // } else{
-        //     sleep(1000)
-        //     this.setState({flipping : true},
-        //         ()=> {
-        //             setTimeout(()=> {
-        //                 this.setState({flipping:false})
-        //             }, 1000)
-        //
-        //         })
-        // }
+        )
     }
 
     render()
@@ -182,8 +167,8 @@ class Board extends React.Component{
                 <div className="container">
                     <div className="row">
                         <div className="col s12 board">
-                            <table id="simple-board">
-                                <tbody>
+                            <table id="simple-board" style={{display:"grid"}}>
+                                <tbody style={{display:"grid"}}>
                                 {this.state.rows}
                                 </tbody>
                             </table>
