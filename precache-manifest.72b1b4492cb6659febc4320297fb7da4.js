@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "1082a162724f5dc3869eef24bff74e1f",
+    "revision": "c241413551988c86ed1ff72a2aefd472",
     "url": "/memodemo/index.html"
   },
   {
-    "revision": "7d88929beebbcbd70080",
+    "revision": "f6c925851b384cb03fb1",
     "url": "/memodemo/static/css/main.476551cf.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/memodemo/static/js/2.fd6a8cc4.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "7d88929beebbcbd70080",
-    "url": "/memodemo/static/js/main.dd916e91.chunk.js"
+    "revision": "f6c925851b384cb03fb1",
+    "url": "/memodemo/static/js/main.e37bea92.chunk.js"
   },
   {
     "revision": "76bb5e56aef706f74f90",
